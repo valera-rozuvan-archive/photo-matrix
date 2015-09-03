@@ -43,6 +43,15 @@ function infoOnPath(pathString) {
   var deferred_infoOnPath = Q.defer(),
     _stats = [];
 
+
+  // Remove any trailing '/' from the pathString.
+  // Replace repeating '/' with a single '/'.
+  pathString = pathString.replace(/\/+/g, '/');
+  if (pathString !== '/') {
+    pathString = pathString.replace(/\/+$/, '');
+  }
+
+
   fs.readdir(pathString, function (err, items) {
     var hiddenFiles = [],
       normalFiles = [],
@@ -52,7 +61,9 @@ function infoOnPath(pathString) {
 
     // Catch any initial errors.
     if (err) {
-      throw err;
+      deferred_infoOnPath.reject(new Error(err));
+
+      return;
     }
 
 
@@ -321,7 +332,7 @@ function infoOnFile(filePath, lstat) {
 
           _def.resolve();
         }, function (err) {
-          console.log(err);
+          console.error(err.stack.split('\n'));
         });
       });
 

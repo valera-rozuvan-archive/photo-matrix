@@ -1,4 +1,4 @@
-var listDir = require('../main'),
+var listDir = require('nls2-lib'),
   fs = require('fs'),
 
   pathString, sudoUid;
@@ -16,10 +16,13 @@ if (sudoUid) {
 
 // Get the name of directory to list it's files.
 if (process.argv.length <= 2) {
-  console.log('Usage: ' + __filename + ' path/of/directory');
-  process.exit(-1);
+  // console.log('Usage: ' + __filename + ' path/of/directory');
+  // process.exit(-1);
+
+  pathString = '.';
+} else {
+  pathString = process.argv[2];
 }
-pathString = process.argv[2];
 
 // Remove any trailing '/' from the pathString.
 // Replace repeating '/' with a single '/'.
@@ -48,6 +51,7 @@ if (fs.lstatSync(pathString).isDirectory() === true) {
       console.log(result.stats[c1].lnString);
     }
 
+    /*
     fs.writeFile(
       'node-ls-v.out',
       JSON.stringify(result) + '\n',
@@ -62,6 +66,7 @@ if (fs.lstatSync(pathString).isDirectory() === true) {
         }
       }
     );
+    */
   }, function (error) {
     console.log(error.stack.split('\n'));
   });
