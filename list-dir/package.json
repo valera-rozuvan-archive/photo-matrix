@@ -1,0 +1,32 @@
+{
+  "name": "list-dir",
+  "version": "0.0.1",
+  "description": "List the contents of a directory",
+  "main": "main.js",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "filesize": "^3.1.3",
+    "moment": "^2.10.6",
+    "posix": "^2.0.1",
+    "q": "^1.4.1",
+    "stat-mode": "^0.2.1",
+    "userid": "^0.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valera-rozuvan/photo-matrix"
+  },
+  "keywords": [
+    "list",
+    "directory"
+  ],
+  "author": "Valera Rozuvan",
+  "license": "kjsefhekjdsfhsdjkfhfjkdfhf",
+  "bugs": {
+    "url": "https://github.com/valera-rozuvan/photo-matrix/issues"
+  }
+}
